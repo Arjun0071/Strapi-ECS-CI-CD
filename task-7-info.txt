@@ -1,0 +1,7 @@
+Task #7
+Deploy a strapi application on AWS using ECS Fargate, managed entirely via terraform
+Create a new repo 
+add a git workflow to create a fresh image, apply tagging and push in your registry
+then update the task revision to use the new image
+Accomplish all the above using git action only.
+ 

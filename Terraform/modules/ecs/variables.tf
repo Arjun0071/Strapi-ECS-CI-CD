@@ -1,0 +1,9 @@
+variable "cluster_name" {}
+variable "image_name" {}
+variable "image_tag" {}
+variable "secrets" {}
+variable "sg_fargate_id" {}
+variable "subnets" {}
+variable "alb_target_group" {}
+variable "alb_dns_name" {}
+variable "key_pair_name" {}
