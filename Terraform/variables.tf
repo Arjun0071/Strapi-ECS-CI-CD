@@ -18,4 +18,5 @@ variable "image_tag" {
 variable "key_name" {
   type        = string
   description = "strapi-key"
+  default     = "strapi-key"
 }
