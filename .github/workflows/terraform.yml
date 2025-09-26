@@ -18,6 +18,7 @@ jobs:
       ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
       ECR_REPO: ${{ secrets.ECR_REPO }}
       IMAGE_TAG: ${{ github.event.inputs.image_tag }}
+      TF_LOG: DEBUG   # Enable debug logs
 
     steps:
       # Step 1: Checkout repository
@@ -46,11 +47,11 @@ jobs:
       # Step 4: Terraform Plan
       - name: Terraform Plan
         working-directory: ./Terraform
-        run: terraform plan -var="image_name=${{ env.ECR_REPO }}" -var="image_tag=${{ env.IMAGE_TAG }}" -var="aws_region=${{ env.AWS_REGION }}"
+        run: terraform plan -input=false -no-color -var="image_name=${{ env.ECR_REPO }}" -var="image_tag=${{ env.IMAGE_TAG }}" -var="aws_region=${{ env.AWS_REGION }}"
 
       # Step 5: Terraform Apply
       - name: Terraform Apply
         working-directory: ./Terraform
-        run: terraform apply -auto-approve -var="image_name=${{ env.ECR_REPO }}" -var="image_tag=${{ env.IMAGE_TAG }}" -var="aws_region=${{ env.AWS_REGION }}"
+        run: terraform apply -auto-approve -input=false -no-color -var="image_name=${{ env.ECR_REPO }}" -var="image_tag=${{ env.IMAGE_TAG }}" -var="aws_region=${{ env.AWS_REGION }}"
 
 
